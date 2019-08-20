@@ -2,7 +2,6 @@
 
 #include "FixedBogieDriver.hpp"
 
-#include "motor/IMotor.hpp"
 #include "motor/DCMotor.hpp"
 
 #define MotorENA        5  // PWM (Right motors)
@@ -11,8 +10,8 @@
 #define MotorIN2        8  // backward A
 #define MotorIN3        9  // forward B
 #define MotorIN4        10 // backward B
-//  TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//  control pins and functions  !!!
+//  TODO:   control pins and functions !!!
+
 
 bogie::IDriver* bogie::FixedBogieDriver::GetInstance()
 {
@@ -30,7 +29,7 @@ int8_t bogie::FixedBogieDriver::GetAngle()
     return angle_;
 }
 
-void bogie::FixedBogieDriver::SetAngle(int8_t angle)
+void bogie::FixedBogieDriver::SetAngle(int angle)
 {
     angle_ = constrain(angle, kMinAngle, kMaxAngle);
 
@@ -41,7 +40,7 @@ void bogie::FixedBogieDriver::SetAngle(int8_t angle)
         left_motor_->SetSpeed(speed_);
         right_motor_->SetSpeed(static_cast<int8_t>(speed_ * angle_ratio));
     }
-    else if (angle < kNoAngle) {
+    else if (angle_ < kNoAngle) {
         left_motor_->SetSpeed(static_cast<int8_t>(speed_ * angle_ratio));
         right_motor_->SetSpeed(speed_);
     }
@@ -56,13 +55,13 @@ int8_t bogie::FixedBogieDriver::GetSpeed()
     return speed_;
 }
 
-void bogie::FixedBogieDriver::SetSpeed(int8_t speed)
+void bogie::FixedBogieDriver::SetSpeed(int speed)
 {
     speed_ = speed;
     SetAngle(angle_);
 }
 
-void bogie::FixedBogieDriver::SetSpeed(int8_t left_speed, int8_t right_speed)
+void bogie::FixedBogieDriver::SetSpeed(int left_speed, int right_speed)
 {
     int8_t left_motor_speed = constrain(left_speed,
                                         motor::kMinSpeed,
@@ -70,6 +69,8 @@ void bogie::FixedBogieDriver::SetSpeed(int8_t left_speed, int8_t right_speed)
     int8_t right_motor_speed = constrain(right_speed,
                                          motor::kMinSpeed,
                                          motor::kMaxSpeed);
+
+    speed_ = (right_motor_speed + left_motor_speed) / 2;
 
     left_motor_->SetSpeed(left_motor_speed);
     right_motor_->SetSpeed(right_motor_speed);

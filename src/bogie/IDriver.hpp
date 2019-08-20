@@ -21,13 +21,13 @@ class IDriver
 
     virtual int8_t GetAngle() = 0;
 
-    virtual void SetAngle(int8_t angle) = 0;
+    virtual void SetAngle(int angle) = 0;
 
     virtual int8_t GetSpeed() = 0;
 
-    virtual void SetSpeed(int8_t speed) = 0;
+    virtual void SetSpeed(int speed) = 0;
 
-    virtual void SetSpeed(int8_t left_speed, int8_t right_speed) = 0;
+    virtual void SetSpeed(int left_speed, int right_speed) = 0;
 
     virtual void SyncSpeed() = 0;
 };

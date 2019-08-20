@@ -1,5 +1,5 @@
-#ifndef ANALOG_MOTOR_HPP
-#define ANALOG_MOTOR_HPP
+#ifndef DC_MOTOR_HPP
+#define DC_MOTOR_HPP
 
 #include <Arduino.h>
 #include "IMotor.hpp"
@@ -28,7 +28,7 @@ class DCMotor : public IMotor
      *  @param enable_pin   The speed pin. Controls motors speed.
      *
      *  Example:
-     *      AnalogMotor analog_motor(IN1, IN2, ENA);
+     *      DCMotor dc_motor(IN1, IN2, ENA);
      */
     DCMotor(uint8_t forward_pin, uint8_t backward_pin, uint8_t enable_pin);
 
@@ -46,7 +46,7 @@ class DCMotor : public IMotor
      *                  Positive value makes motor spin forward.
      *                  Negative value makes motor spin backward.
      */
-    void SetSpeed(int8_t speed) override;
+    void SetSpeed(int speed) override;
 
  private:
     /**
@@ -83,9 +83,14 @@ class DCMotor : public IMotor
     uint8_t enable_pin_;
 
     /**
-     *  The speed pin. Controls motors speed.
+     *  The speed.
      */
     int8_t speed_;
+
+    /**
+     *  The PWM speed.
+     */
+    int8_t pwm_speed_;
 };
 
 }

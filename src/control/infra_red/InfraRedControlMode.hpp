@@ -8,7 +8,6 @@
 #include "../../bogie/IDriver.hpp"
 #include "../../lib/IRremote/IRremote.h"
 
-
 namespace control
 {
 namespace infra_red

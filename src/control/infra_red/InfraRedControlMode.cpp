@@ -43,7 +43,7 @@ void control::infra_red::InfraRedControlMode::Control()
 
         case NUM_1:
             speed_ = SPEED_1;   //  TODO: update speed to driver!
-                                // apply speed to last moving command!
+            // apply speed to last moving command!
             break;
 
         case NUM_2:

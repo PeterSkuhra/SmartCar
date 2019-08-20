@@ -14,13 +14,13 @@ class FixedBogieDriver : public IDriver
 
     int8_t GetAngle() override;
 
-    void SetAngle(int8_t angle) override;
+    void SetAngle(int angle) override;
 
     int8_t GetSpeed() override;
 
-    void SetSpeed(int8_t speed) override;
+    void SetSpeed(int speed) override;
 
-    void SetSpeed(int8_t left_speed, int8_t right_speed) override;
+    void SetSpeed(int left_speed, int right_speed) override;
 
     void SyncSpeed() override;
 

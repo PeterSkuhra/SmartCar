@@ -9,6 +9,9 @@ bogie::motor::DCMotor::DCMotor(
     enable_pin_(enable_pin),
     speed_(motor::kNoSpeed)
 {
+    pinMode(forward_pin_, OUTPUT);
+    pinMode(backward_pin_, OUTPUT);
+    pinMode(enable_pin_, OUTPUT);
 }
 
 int8_t bogie::motor::DCMotor::GetSpeed() const
@@ -16,7 +19,7 @@ int8_t bogie::motor::DCMotor::GetSpeed() const
     return speed_;
 }
 
-void bogie::motor::DCMotor::SetSpeed(int8_t speed)
+void bogie::motor::DCMotor::SetSpeed(int speed)
 {
     if (speed > 0) {
         SetDirection(FORWARD);
@@ -31,18 +34,18 @@ void bogie::motor::DCMotor::SetSpeed(int8_t speed)
     speed_ = constrain(speed, motor::kMinSpeed, motor::kMaxSpeed);
 
     uint8_t absolute_speed = abs(constrain(
-        speed,
+        speed_,
         motor::kMinSpeed,
         motor::kMaxSpeed));
 
-    uint8_t pwm_speed = map(
+    uint8_t pwm_speed_ = map(
         absolute_speed,
-        motor::kMinSpeed,
+        motor::kNoSpeed,
         motor::kMaxSpeed,
         kMinPWMSpeed,
         kMaxPWMSpeed);
 
-    analogWrite(enable_pin_, pwm_speed);
+    analogWrite(enable_pin_, pwm_speed_);
 }
 
 void bogie::motor::DCMotor::SetDirection(MotorDirection direction)

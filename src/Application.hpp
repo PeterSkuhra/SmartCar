@@ -9,9 +9,13 @@ class Application : public IExecutable
     static Application* GetInstance();
 
     void Run();
+    void Once();
 
  private:
     Application();
+
+ private:
+    bool once_launched_;
 
 };
 

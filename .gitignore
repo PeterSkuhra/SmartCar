@@ -1,6 +1,4 @@
-test
 include
-platformio.ini
 .idea
 .pio
 .clang_complete

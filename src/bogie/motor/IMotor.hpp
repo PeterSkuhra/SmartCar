@@ -9,11 +9,11 @@ namespace bogie
 {
 namespace motor
 {
-const int8_t kMinSpeed = -100;
+static const int8_t kMinSpeed = -100;
 
-const int8_t kNoSpeed = 0;
+static const int8_t kNoSpeed = 0;
 
-const int8_t kMaxSpeed = 100;
+static const int8_t kMaxSpeed = 100;
 
 /******************************************************************************
  *  Interface that represents any motor.
@@ -38,7 +38,7 @@ class IMotor
      *                  Positive value makes motor spin forward.
      *                  Negative value makes motor spin backward.
      */
-    virtual void SetSpeed(int8_t speed) = 0;
+    virtual void SetSpeed(int speed) = 0;
 
  protected:
     /**

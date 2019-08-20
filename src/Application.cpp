@@ -11,7 +11,17 @@ void Application::Run()
 
 }
 
-Application::Application()
+void Application::Once()
+{
+    if (!once_launched_) {
+        once_launched_ = true;
+
+        // CODE...
+    }
+}
+
+Application::Application() :
+    once_launched_(false)
 {
 
 }
