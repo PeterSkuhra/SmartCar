@@ -14,6 +14,11 @@ bogie::motor::DCMotor::DCMotor(
     pinMode(enable_pin_, OUTPUT);
 }
 
+bogie::motor::DCMotor::~DCMotor()
+{
+    SetSpeed(0);
+}
+
 int8_t bogie::motor::DCMotor::GetSpeed() const
 {
     return speed_;

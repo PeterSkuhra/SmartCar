@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 
+#include "MoveState.hpp"
 #include "../IControlMode.hpp"
 
 #include "../../bogie/IDriver.hpp"
@@ -34,6 +35,8 @@ class InfraRedControlMode : public IControlMode
      */
     void UpdateIR();
 
+    void ApplySpeed(MoveState move_state);
+
  private:
 
     IRrecv ir_receiver_;
@@ -43,9 +46,11 @@ class InfraRedControlMode : public IControlMode
     uint32_t ir_value_;
     uint32_t ir_last_value_;
 
+    int8_t speed_;
+
     bogie::IDriver* bogie_driver_;
 
-    int8_t speed_;
+    control::infra_red::MoveState move_state_;
 };
 
 }

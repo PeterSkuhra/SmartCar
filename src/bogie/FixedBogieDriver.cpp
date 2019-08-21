@@ -24,6 +24,15 @@ bogie::IDriver* bogie::FixedBogieDriver::GetInstance()
     return &driver_instance;
 }
 
+bogie::FixedBogieDriver::~FixedBogieDriver()
+{
+    SetAngle(0);
+    SetSpeed(0, 0);
+
+    delete left_motor_;
+    delete right_motor_;
+}
+
 int8_t bogie::FixedBogieDriver::GetAngle()
 {
     return angle_;

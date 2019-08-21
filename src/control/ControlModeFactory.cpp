@@ -7,7 +7,6 @@ control::IControlMode* control::ControlModeFactory::GetControlMode(
     ControlModeType control_mode_type)
 {
     delete control_mode_;
-    control_mode_ = nullptr;
 
     switch (control_mode_type) {
         case PS2:

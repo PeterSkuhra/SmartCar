@@ -33,6 +33,11 @@ class DCMotor : public IMotor
     DCMotor(uint8_t forward_pin, uint8_t backward_pin, uint8_t enable_pin);
 
     /**
+     *  Destructor.
+     */
+    ~DCMotor();
+
+    /**
      *  Returns current speed of motor.
      *
      *  @return current speed of motor.

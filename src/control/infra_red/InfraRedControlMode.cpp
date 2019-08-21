@@ -21,20 +21,24 @@ void control::infra_red::InfraRedControlMode::Control()
     UpdateIR();
 
     switch (ir_value_) {
-        case FORWARD:
+        case UP:
             bogie_driver_->SetSpeed(speed_);
+            move_state_ = FORWARD;
             break;
 
-        case BACKWARD:
+        case DOWN:
             bogie_driver_->SetSpeed(speed_ * (-1));
+            move_state_ = BACKWARD;
             break;
 
         case LEFT:
             bogie_driver_->SetSpeed(speed_ * (-1), speed_);
+            move_state_ = CCW;
             break;
 
         case RIGHT:
             bogie_driver_->SetSpeed(speed_, speed_ * (-1));
+            move_state_ = CW;
             break;
 
         case OK:
@@ -53,11 +57,9 @@ void control::infra_red::InfraRedControlMode::Control()
         case NUM_3:
             speed_ = SPEED_3;
             break;
-
-        case NUM_4:
-            speed_ = SPEED_4;
-            break;
     }
+
+    ApplySpeed(move_state_);
 }
 
 void control::infra_red::InfraRedControlMode::UpdateIR()
@@ -66,5 +68,26 @@ void control::infra_red::InfraRedControlMode::UpdateIR()
         ir_last_value_ = ir_value_;
         ir_value_ = ir_results_.value;
         ir_receiver_.resume();
+    }
+}
+
+void control::infra_red::InfraRedControlMode::ApplySpeed(MoveState move_state)
+{
+    switch (move_state) {
+        case FORWARD:
+            bogie_driver_->SetSpeed(speed_);
+            break;
+
+        case BACKWARD:
+            bogie_driver_->SetSpeed(speed_ * (-1));
+            break;
+
+        case CCW:
+            bogie_driver_->SetSpeed(speed_ * (-1), speed_);
+            break;
+
+        case CW:
+            bogie_driver_->SetSpeed(speed_, speed_ * (-1));
+            break;
     }
 }

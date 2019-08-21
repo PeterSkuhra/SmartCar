@@ -7,10 +7,15 @@
 namespace bogie
 {
 
+/******************************************************************************
+ *  A singleton class ...
+ *****************************************************************************/
 class FixedBogieDriver : public IDriver
 {
  public:
     static IDriver* GetInstance();
+
+    ~FixedBogieDriver();
 
     int8_t GetAngle() override;
 

@@ -8,8 +8,8 @@ namespace infra_red
 
 enum IRButtonsValues
 {
-    FORWARD = 0xFF629D,
-    BACKWARD = 0xFFA857,
+    UP = 0xFF629D,
+    DOWN = 0xFFA857,
     LEFT = 0xFF22DD,
     RIGHT = 0xFFC23D,
     OK = 0xFF02FD,

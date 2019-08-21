@@ -46,6 +46,8 @@ void speed_test()
             TEST_ASSERT_EQUAL_INT(i, left_motor.GetSpeed());
         }
     }
+
+    stop_motors();
 }
 
 void speed_raise()
@@ -78,7 +80,8 @@ void setup()
 
     UNITY_BEGIN();
 
-    //RUN_TEST(speed_test);
+    RUN_TEST(speed_test);
+    delay(1000);
     RUN_TEST(speed_raise);
 
     UNITY_END();

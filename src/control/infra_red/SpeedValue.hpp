@@ -8,10 +8,9 @@ namespace infra_red
 
 enum SpeedValue
 {
-    SPEED_1 = 25,
-    SPEED_2 = 50,
-    SPEED_3 = 75,
-    SPEED_4 = 100
+    SPEED_1 = 50,
+    SPEED_2 = 75,
+    SPEED_3 = 100,
 };
 
 }
