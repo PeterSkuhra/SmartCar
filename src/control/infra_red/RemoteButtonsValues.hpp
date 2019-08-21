@@ -6,13 +6,16 @@ namespace control
 namespace infra_red
 {
 
+/******************************************************************************
+ *  Enumerated type of buttons values on infrared remote controller.
+ *****************************************************************************/
 enum IRButtonsValues
 {
+    OK = 0xFF02FD,
     UP = 0xFF629D,
     DOWN = 0xFFA857,
     LEFT = 0xFF22DD,
     RIGHT = 0xFFC23D,
-    OK = 0xFF02FD,
 
     NUM_0 = 0xFF4AB5,
     NUM_1 = 0xFF6897,
@@ -26,7 +29,7 @@ enum IRButtonsValues
     NUM_9 = 0xFF5AA5,
 
     STAR = 0xFF42BD,
-    HASH = 0xFF52AD
+    HASH = 0xFF52AD,
 };
 
 }

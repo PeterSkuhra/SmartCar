@@ -6,12 +6,16 @@ namespace control
 namespace infra_red
 {
 
+/******************************************************************************
+ *  Enumerated type of car move state.
+ *****************************************************************************/
 enum MoveState
 {
+    STOP,
     FORWARD,
     BACKWARD,
-    CCW,        // LEFT
-    CW          // RIGHT
+    CCW,
+    CW
 };
 
 }
