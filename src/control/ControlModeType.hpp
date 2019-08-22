@@ -4,6 +4,9 @@
 namespace control
 {
 
+/******************************************************************************
+ *  Enumerated type of control modes. You can switch between them.
+ *****************************************************************************/
 enum ControlModeType
 {
     PS2,
