@@ -4,7 +4,7 @@
 class IExecutable
 {
  public:
-    ~IExecutable() = default;
+    virtual ~IExecutable() = default;
 
     virtual void Run() = 0;
 };
