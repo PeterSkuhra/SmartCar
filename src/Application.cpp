@@ -1,6 +1,8 @@
 #include "Application.hpp"
 
-Application* Application::GetInstance()
+#include "IExecutable.hpp"
+
+IExecutable* Application::GetInstance()
 {
     static Application instance;
     return &instance;
@@ -8,7 +10,9 @@ Application* Application::GetInstance()
 
 void Application::Run()
 {
+    Once();
 
+    lcd_manager_->Run();
 }
 
 void Application::Once()
@@ -23,5 +27,5 @@ void Application::Once()
 Application::Application() :
     once_launched_(false)
 {
-
+    lcd_manager_ = LCDManager::GetInstance();
 }

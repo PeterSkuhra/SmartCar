@@ -6,7 +6,7 @@
 class LCDManager : public IExecutable
 {
  public:
-    static LCDManager* GetInstance();
+    static IExecutable* GetInstance();
 
     void Run();
 

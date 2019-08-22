@@ -3,12 +3,11 @@
 #include <Arduino.h>
 #include "Application.hpp"
 
-Application* app;
+IExecutable* app;
 
 void setup()
 {
     app = Application::GetInstance();
-    app->Once();
 }
 
 void loop()

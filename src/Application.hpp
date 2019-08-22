@@ -2,20 +2,24 @@
 #define APPLICATION_HPP
 
 #include "IExecutable.hpp"
+#include "LCDManager.hpp"
 
 class Application : public IExecutable
 {
  public:
-    static Application* GetInstance();
+    static IExecutable* GetInstance();
 
-    void Run();
-    void Once();
+    void Run() override;
 
  private:
     Application();
 
+    void Once();
+
  private:
     bool once_launched_;
+
+    LCDManager* lcd_manager_;
 
 };
 

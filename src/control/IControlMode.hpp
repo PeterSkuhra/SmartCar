@@ -14,7 +14,7 @@ class IControlMode
     /**
      *  Destructor.
      */
-    ~IControlMode() = default;
+    virtual ~IControlMode() = default;
 
     /**
      *  Controls car with the current control mode.
