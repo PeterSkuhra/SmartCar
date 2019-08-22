@@ -16,6 +16,8 @@ class FixedBogieDriver : public IDriver
  public:
     /**
      *  Returns a single instance of FixedBogieDriver.
+     *
+     *  @return a single instance of FixedBogieDriver.
      */
     static IDriver* GetInstance();
 

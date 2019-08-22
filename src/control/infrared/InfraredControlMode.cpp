@@ -1,4 +1,4 @@
-#include "InfraRedControlMode.hpp"
+#include "InfraredControlMode.hpp"
 
 #include "RemoteButtonsValues.hpp"
 #include "SpeedValue.hpp"
@@ -7,18 +7,13 @@
 
 #define IR_RECEIVER_PIN     12  //  TODO!!!
 
-control::infra_red::InfraRedControlMode::InfraRedControlMode() :
-    ir_receiver_(IR_RECEIVER_PIN),
-    ir_value_(0x0),
-    speed_(SPEED_1)
+control::IControlMode* control::infrared::InfraredControlMode::GetInstance()
 {
-    ir_receiver_.enableIRIn();
-    bogie_driver_ = bogie::FixedBogieDriver::GetInstance();
-    bogie_driver_->SetSpeed(0);
-    bogie_driver_->SetAngle(0);
+    static InfraredControlMode instance;
+    return &instance;
 }
 
-control::infra_red::InfraRedControlMode::~InfraRedControlMode()
+control::infrared::InfraredControlMode::~InfraredControlMode()
 {
     ir_value_ = 0x0;
     ir_last_value_ = 0x0;
@@ -31,7 +26,7 @@ control::infra_red::InfraRedControlMode::~InfraRedControlMode()
     delete bogie_driver_;
 }
 
-void control::infra_red::InfraRedControlMode::Control()
+void control::infrared::InfraredControlMode::Control()
 {
     UpdateIR();
 
@@ -40,7 +35,18 @@ void control::infra_red::InfraRedControlMode::Control()
     ApplySpeed(move_state_);
 }
 
-void control::infra_red::InfraRedControlMode::UpdateIR()
+control::infrared::InfraredControlMode::InfraredControlMode() :
+    ir_receiver_(IR_RECEIVER_PIN),
+    ir_value_(0x0),
+    speed_(SPEED_1)
+{
+    ir_receiver_.enableIRIn();
+    bogie_driver_ = bogie::FixedBogieDriver::GetInstance();
+    bogie_driver_->SetSpeed(0);
+    bogie_driver_->SetAngle(0);
+}
+
+void control::infrared::InfraredControlMode::UpdateIR()
 {
     if (ir_receiver_.decode(&ir_results_)) {
         ir_last_value_ = ir_value_;
@@ -49,7 +55,7 @@ void control::infra_red::InfraRedControlMode::UpdateIR()
     }
 }
 
-void control::infra_red::InfraRedControlMode::ProcessInput()
+void control::infrared::InfraredControlMode::ProcessInput()
 {
     switch (ir_value_) {
         case OK:
@@ -90,7 +96,7 @@ void control::infra_red::InfraRedControlMode::ProcessInput()
     }
 }
 
-void control::infra_red::InfraRedControlMode::ApplySpeed(MoveState move_state)
+void control::infrared::InfraredControlMode::ApplySpeed(MoveState move_state)
 {
     switch (move_state) {
         case STOP:

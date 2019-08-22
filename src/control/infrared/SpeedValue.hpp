@@ -3,7 +3,7 @@
 
 namespace control
 {
-namespace infra_red
+namespace infrared
 {
 
 enum SpeedValue

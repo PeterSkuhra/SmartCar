@@ -1,5 +1,5 @@
-#ifndef INFRA_RED_CONTROL_MODE_HPP
-#define INFRA_RED_CONTROL_MODE_HPP
+#ifndef INFRARED_CONTROL_MODE_HPP
+#define INFRARED_CONTROL_MODE_HPP
 
 #include <Arduino.h>
 
@@ -11,31 +11,38 @@
 
 namespace control
 {
-namespace infra_red
+namespace infrared
 {
 
 /******************************************************************************
  *  Class for control SmartCar via infrared transceiver.
  *****************************************************************************/
-class InfraRedControlMode : public IControlMode
+class InfraredControlMode : public IControlMode
 {
  public:
     /**
-     *  Constructor.
+     *  Returns a single instance of InfraredControlMode.
+     *
+     *  @return a single instance of InfraredControlMode.
      */
-    InfraRedControlMode();
+    static IControlMode* GetInstance();
 
     /**
      *  Destructor.
      */
-    ~InfraRedControlMode();
+    ~InfraredControlMode();
 
     /**
-     *  Controls car via InfraRed remote.
+     *  Controls car via infrared remote.
      */
     void Control() override;
 
  private:
+    /**
+    *  Private constructor.
+    */
+    InfraredControlMode();
+
     /**
      *  Updates received value.
      */
@@ -51,7 +58,7 @@ class InfraRedControlMode : public IControlMode
      */
     void ApplySpeed(MoveState move_state);
 
-private:
+ private:
     /**
      *  InfraRed receiver instance.
      */
@@ -85,7 +92,7 @@ private:
     /**
      *  Current move state of car.
      */
-    control::infra_red::MoveState move_state_;
+    control::infrared::MoveState move_state_;
 };
 
 }
