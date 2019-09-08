@@ -3,6 +3,7 @@
 
 #include "IExecutable.hpp"
 #include "LCDManager.hpp"
+#include "control/IControlMode.hpp"
 
 class Application : public IExecutable
 {
@@ -21,6 +22,7 @@ class Application : public IExecutable
 
     LCDManager* lcd_manager_;
 
+    control::IControlMode* control_mode_;
 };
 
 #endif

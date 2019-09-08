@@ -6,17 +6,25 @@
 #include "line/LineControlMode.hpp"
 #include "self/SelfControlMode.hpp"
 
+control::ControlModeFactory* control::ControlModeFactory::GetInstance()
+{
+    static ControlModeFactory instance;
+    return &instance;
+}
+
 control::IControlMode* control::ControlModeFactory::GetControlMode(
     ControlModeType control_mode_type)
 {
-    delete control_mode_;
+    if (control_mode_ != nullptr) {
+        delete control_mode_;
+    }
 
     switch (control_mode_type) {
         case PS2:
             control_mode_ = ps2::PS2ControlMode::GetInstance();
             break;
 
-        case INFRA_RED:
+        case INFRARED:
             control_mode_ = infrared::InfraredControlMode::GetInstance();
             break;
 
@@ -41,5 +49,5 @@ control::IControlMode* control::ControlModeFactory::GetControlMode(
 
 control::ControlModeFactory::ControlModeFactory()
 {
-
+    control_mode_ = nullptr;
 }

@@ -13,6 +13,9 @@ namespace control
 class ControlModeFactory
 {
  public:
+
+    static ControlModeFactory* GetInstance();
+
     /**
      *  Static method.
      *  Returns specified control mode by ControlModeType.
@@ -21,7 +24,7 @@ class ControlModeFactory
      *
      *  @return chosen control mode.
      */
-    static IControlMode* GetControlMode(ControlModeType control_mode_type);
+    IControlMode* GetControlMode(ControlModeType control_mode_type);
 
  private:
     /**
@@ -33,7 +36,7 @@ class ControlModeFactory
     /**
      *  Current control mode.
      */
-    static IControlMode* control_mode_;
+    IControlMode* control_mode_;
 
 };
 

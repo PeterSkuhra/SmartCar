@@ -112,11 +112,11 @@ void control::infrared::InfraredControlMode::ApplySpeed(MoveState move_state)
             break;
 
         case CCW:
-            bogie_driver_->SetSpeed(speed_ * (-1), speed_);
+            bogie_driver_->SetSpeed(90 * (-1), 90);
             break;
 
         case CW:
-            bogie_driver_->SetSpeed(speed_, speed_ * (-1));
+            bogie_driver_->SetSpeed(90, 90 * (-1));
             break;
     }
 }

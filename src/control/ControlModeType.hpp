@@ -10,7 +10,7 @@ namespace control
 enum ControlModeType
 {
     PS2,
-    INFRA_RED,
+    INFRARED,
     BLUETOOTH,
     LINE,
     SELF
